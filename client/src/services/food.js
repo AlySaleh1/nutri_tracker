@@ -1,5 +1,5 @@
 import axios from "axios";
-const baseUrl = "/api/";
+const baseUrl = "http://127.0.0.1:5000/api";
 
 const process = (fd) => {
   const config = {
