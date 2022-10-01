@@ -11,7 +11,7 @@ const PhotoForm = ({ uploadPhoto, submitted }) => {
   };
 
   return (
-    <form className="card w-80 shadow-lg bg-white hover:shadow-gray-500">
+    <form className="card w-1/5 shadow-lg bg-white hover:shadow-gray-500">
       <div className="card-body">
         <h2 className="card-title">Record Your Meal</h2>
         <input
