@@ -68,7 +68,7 @@ const App = () => {
   const uploadPhoto = async (fd) => {
     setSubmitted(true);
     const newNutriData = await foodHandler.process(fd);
-    console.log(newNutriData);
+    console.log(newNutriData.data);
     setSubmitted(false);
   };
 
