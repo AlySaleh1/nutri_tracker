@@ -23,7 +23,11 @@ const PhotoForm = ({ uploadPhoto, submitted }) => {
           accept=".jpg, .jpeg"
           required
         />
-        <button className="btn" onClick={submitForm} disabled={submitted}>
+        <button
+          className="btn bg-primary text-white"
+          onClick={submitForm}
+          disabled={submitted}
+        >
           Record Nutrients
         </button>
       </div>

@@ -6,7 +6,6 @@ const Chart = ({ nutriInfo }) => {
   const data = nutriInfo.find(
     (item) => item.name.toLowerCase() === selectedData
   );
-  console.log(data);
 
   const today = new Date();
   const date = today.toLocaleDateString("en-US", {
@@ -32,38 +31,19 @@ const Chart = ({ nutriInfo }) => {
           ))}
         </select>
 
-        <div className="flex flex-row items-center justify-center space-y-4">
-          <h2 className="w-1/5 ">Calories</h2>
-          <progress
-            className="progress h-12 w-4/5 progress-primary"
-            value={data.nutrients.calories}
-            max="1"
-          ></progress>
-        </div>
-        <div className="flex flex-row items-center justify-center space-y-4">
-          <h2 className="w-1/5 ">Fat</h2>
-          <progress
-            className="progress h-12 w-4/5 progress-primary"
-            value={data.nutrients.fat}
-            max="1"
-          ></progress>
-        </div>
-        <div className="flex flex-row items-center justify-center space-y-4">
-          <h2 className="w-1/5 ">Carbs</h2>
-          <progress
-            className="progress h-12 w-4/5 progress-primary"
-            value={data.nutrients.carbs}
-            max="1"
-          ></progress>
-        </div>
-        <div className="flex flex-row items-center justify-center space-y-4">
-          <h2 className="w-1/5 ">Protein</h2>
-          <progress
-            className="progress h-12 w-4/5 progress-primary"
-            value={data.nutrients.protein}
-            max="1"
-          ></progress>
-        </div>
+        {Object.entries(data.nutrients).map(([label, data]) => (
+          <div
+            key={label}
+            className="flex flex-row items-center justify-center space-y-4"
+          >
+            <h2 className="w-1/5 ">{label}</h2>
+            <progress
+              className="progress h-12 w-4/5 progress-primary"
+              value={data}
+              max="1"
+            ></progress>
+          </div>
+        ))}
       </div>
     </div>
   );
