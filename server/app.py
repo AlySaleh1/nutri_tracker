@@ -24,10 +24,24 @@ def submit_image():
     foods = analyze("image")
     headers = {'Content-Type':'application/json', 'x-app-id':'060cfd73', 'x-app-key':'e185481be83614e23e0af33a9a839f6b'}
 
-    resp = requests.post("https://trackapi.nutritionix.com/v2/natural/nutrients", headers=headers, data=json.dumps({"query":"burger"}))
+    resp = requests.post("https://trackapi.nutritionix.com/v2/natural/nutrients", headers=headers, data=json.dumps({"query":"apple"}))
     
     #just gotta format resp.content to make more readable
-    return (resp.content)
+  
+    data = resp.json()
+    info = data["foods"][0]
+    
+    myDic = {}
+    myDic["name"] = info["food_name"]
+   
+    newDic =  {"calories" : info["nf_calories"], "fat": info["nf_total_fat"], "carbs": info["nf_total_carbohydrate"], "protein": info["nf_protein"]}
+    myDic["nutrients"] = newDic
+    print(newDic)
+    total_info.append(myDic)
+    print(total_info)
+
+   
+    return jsonify(myDic)
     
 
 def analyze(p):
