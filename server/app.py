@@ -21,10 +21,10 @@ def submit_image():
     image = request.files["photo"]
     print(type(image))
 
-    foods = analyze("image")
+    food = analyze("image")
     headers = {'Content-Type':'application/json', 'x-app-id':'060cfd73', 'x-app-key':'e185481be83614e23e0af33a9a839f6b'}
 
-    resp = requests.post("https://trackapi.nutritionix.com/v2/natural/nutrients", headers=headers, data=json.dumps({"query":"apple"}))
+    resp = requests.post("https://trackapi.nutritionix.com/v2/natural/nutrients", headers=headers, data=json.dumps({"query":food}))
     
     #just gotta format resp.content to make more readable
   
